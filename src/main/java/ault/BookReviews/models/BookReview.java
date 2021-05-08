@@ -1,6 +1,5 @@
 package ault.BookReviews.models;
 
-import java.util.ArrayList;
 import lombok.Data;
 
 import org.springframework.data.mongodb.core.mapping.Document;

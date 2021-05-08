@@ -1,13 +1,10 @@
 package ault.BookReviews.services.DTOs;
 
-import java.util.ArrayList;
 import lombok.Data;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import ault.BookReviews.models.Book;
-import ault.BookReviews.models.BookReview;
-import ault.BookReviews.repositories.BookRepository;
 
 @Data
 @Document
