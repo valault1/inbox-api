@@ -1,4 +1,4 @@
-package ault.BookReviews.models.Requests;
+package ault.InboxApi.models.Requests;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 import lombok.Data;
 
 @Data
-public class CreateEntityRequest {
+public class CreateEntryRequest {
 
   private String entityTypeId;
 

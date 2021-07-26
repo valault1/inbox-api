@@ -1,4 +1,4 @@
-package ault.BookReviews.models;
+package ault.InboxApi.models;
 
 import java.util.List;
 import lombok.Data;
@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document
 @NoArgsConstructor
-public class Entity {
+public class Entry {
 
   @Id
   private String id;
@@ -23,22 +23,22 @@ public class Entity {
 
   private List<String> tags;
 
-  private List<EntityProperty> properties;
+  private List<String> properties;
 
-  public Entity(String entityTypeId, List<EntityProperty> properties, List<String> tags) {
+  public Entry(String entityTypeId, List<String> properties, List<String> tags) {
     this.entityTypeId = entityTypeId;
     this.properties = properties;
     this.tags = tags;
   }
 
-  public Entity(String entityTypeId, List<EntityProperty> properties, List<String> tags, String name) {
+  public Entry(String entityTypeId, List<String> properties, List<String> tags, String name) {
     this.entityTypeId = entityTypeId;
     this.properties = properties;
     this.tags = tags;
     this.name = name;
   }
 
-  public Entity(String entityTypeId, List<EntityProperty> properties, List<String> tags, String name, String notes) {
+  public Entry(String entityTypeId, List<String> properties, List<String> tags, String name, String notes) {
     this.notes = notes;
     this.entityTypeId = entityTypeId;
     this.properties = properties;
@@ -47,8 +47,7 @@ public class Entity {
 
   }
 
-  public Entity(String id, String entityTypeId, List<EntityProperty> properties, List<String> tags, String name,
-      String notes) {
+  public Entry(String id, String entityTypeId, List<String> properties, List<String> tags, String name, String notes) {
     this.id = id;
     this.entityTypeId = entityTypeId;
     this.properties = properties;

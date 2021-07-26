@@ -1,8 +1,7 @@
-package ault.BookReviews.models;
+package ault.InboxApi.models;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -21,25 +20,25 @@ public class ApiError {
   private List<ApiSubError> subErrors;
 
   private ApiError() {
-      timestamp = LocalDateTime.now();
+    timestamp = LocalDateTime.now();
   }
 
   public ApiError(HttpStatus status) {
-      this();
-      this.status = status;
+    this();
+    this.status = status;
   }
 
   public ApiError(HttpStatus status, Throwable ex) {
-      this();
-      this.status = status;
-      this.message = "Unexpected error";
-      this.debugMessage = ex.getLocalizedMessage();
+    this();
+    this.status = status;
+    this.message = "Unexpected error";
+    this.debugMessage = ex.getLocalizedMessage();
   }
 
   public ApiError(HttpStatus status, String message, Throwable ex) {
-      this();
-      this.status = status;
-      this.message = message;
-      this.debugMessage = ex.getLocalizedMessage();
+    this();
+    this.status = status;
+    this.message = message;
+    this.debugMessage = ex.getLocalizedMessage();
   }
 }

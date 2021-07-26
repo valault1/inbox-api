@@ -1,4 +1,4 @@
-http://localhost:8080/swagger-ui.html#!/entity45controller/createEntityUsingPUT
+http://localhost:8080/swagger-ui.html#!/entity45controller/createEntryUsingPUT
 
 // Quote
 {
