@@ -1,6 +1,7 @@
 package ault.InboxApi.DataInitialization;
 
 import ault.InboxApi.repositories.*;
+import ault.Entities.Entries.Entry;
 import ault.InboxApi.models.*;
 
 import org.json.simple.JSONArray;

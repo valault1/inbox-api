@@ -1,9 +1,12 @@
-package ault.InboxApi.services;
+package ault.Entities.Entries;
 
 import ault.InboxApi.repositories.*;
 import ault.InboxApi.models.*;
 
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,11 +29,17 @@ public class EntryService {
   }
 
   public List<Entry> entries() {
-    return _entryRepository.findAll();
+    return _entryRepository.getUnarchivedEntries();
   }
 
   public long entryCount() {
-    return _entryRepository.count();
+    return _entryRepository.countUnarchived();
+  }
+
+  public String createEntry(CreateEntryRequest request) {
+    Entry entry = new Entry(request.content, request.userId);
+    _entryRepository.save(entry);
+    return entry.getId();
   }
 
   public String updateEntry(Entry updatedEntry) {
@@ -39,18 +48,11 @@ public class EntryService {
     return updatedEntry.getId();
   }
 
-  public List<String> getTags() {
-    var entities = entries();
-    var result = new ArrayList<String>();
-    for (var entity : entities) {
-      for (var tag : entity.getTags()) {
-        if (!result.contains(tag)) {
-          result.add(tag);
-        }
-
-      }
-    }
-    return result;
+  public boolean archiveEntry(String entryId) {
+    Entry entry = _entryRepository.findById(entryId).get();
+    entry.setArchived(true);
+    _entryRepository.save(entry);
+    return true;
   }
 
 }

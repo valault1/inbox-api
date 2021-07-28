@@ -1,17 +1,14 @@
-package ault.InboxApi.controllers;
+package ault.Entities.Entries;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import ault.InboxApi.models.Entry;
-import ault.InboxApi.models.Requests.CreateEntryRequest;
-import ault.InboxApi.services.EntryService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -23,7 +20,7 @@ public class EntryController {
     this._entryService = entryService;
   }
 
-  @GetMapping("/Entry/count")
+  @GetMapping("/Entry/Count")
   public long entityCount() {
     return _entryService.entryCount();
   }
@@ -36,8 +33,7 @@ public class EntryController {
 
   @PutMapping("/Entry")
   public String createEntry(@RequestBody CreateEntryRequest newEntryRequest) {
-    System.out.println(newEntryRequest);
-    return "fake";
+    return _entryService.createEntry(newEntryRequest);
   }
 
   @PostMapping("/Entry")
@@ -46,10 +42,9 @@ public class EntryController {
     return _entryService.updateEntry(updatedEntry);
   }
 
-  @GetMapping("/Entry/tags")
-  public List<String> getTags() {
-    System.out.println("Got request for tags!");
-    return _entryService.getTags();
+  @PostMapping("/Entry/Archive/{entryId}")
+  public boolean archiveEntry(@PathVariable("entryId") String entryId) {
+    return _entryService.archiveEntry(entryId);
   }
 
 }

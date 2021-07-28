@@ -3,6 +3,7 @@ package ault.InboxApi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -14,6 +15,7 @@ import springfox.documentation.builders.PathSelectors;
 
 @SpringBootApplication
 @EnableSwagger2
+@ComponentScan(basePackages = { "ault.Entities", "ault.InboxApi.controllers" })
 public class InboxApi {
 
   public static void main(String[] args) {
