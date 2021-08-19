@@ -1,4 +1,4 @@
-package ault.Entities.Entries;
+package ault.InboxApi.Entities.Entries;
 
 import java.util.List;
 
@@ -12,5 +12,7 @@ public class CreateEntryRequest {
   public String content;
 
   public String userId;
+
+  public String context;
 
 }

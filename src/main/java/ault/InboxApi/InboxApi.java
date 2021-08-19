@@ -15,7 +15,7 @@ import springfox.documentation.builders.PathSelectors;
 
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan(basePackages = { "ault.Entities", "ault.InboxApi.controllers" })
+@ComponentScan(basePackages = { "ault.InboxApi.Entities", "ault.InboxApi.controllers" })
 public class InboxApi {
 
   public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ault.Entities.Entries;
+package ault.InboxApi.Entities.Entries;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,29 +20,36 @@ public class EntryController {
     this._entryService = entryService;
   }
 
-  @GetMapping("/Entry/Count")
-  public long entityCount() {
-    return _entryService.entryCount();
+  @GetMapping("/entry/count/{userId}/{context}")
+  public long entityCount(@PathVariable("userId") String userId, @PathVariable("context") String context) {
+    return _entryService.entryCount(userId, context);
   }
 
-  @GetMapping("/Entry/Entries")
-  public List<Entry> projects() {
+  @GetMapping("/entry/entries")
+  public List<Entry> entries() {
     System.out.println("Got request for all entities");
     return _entryService.entries();
   }
 
-  @PutMapping("/Entry")
+  @GetMapping("/entry/{userId}/{context}")
+  public List<Entry> getEntriesByUserAndContext(@PathVariable("userId") String userId,
+      @PathVariable("context") String context) {
+    System.out.println("Got request for entries by user");
+    return _entryService.getEntriesByUserAndContext(userId, context);
+  }
+
+  @PutMapping("/entry")
   public String createEntry(@RequestBody CreateEntryRequest newEntryRequest) {
     return _entryService.createEntry(newEntryRequest);
   }
 
-  @PostMapping("/Entry")
+  @PostMapping("/entry")
   public String updateEntry(@RequestBody Entry updatedEntry) {
     System.out.println("Got request to update entity");
     return _entryService.updateEntry(updatedEntry);
   }
 
-  @PostMapping("/Entry/Archive/{entryId}")
+  @PostMapping("/entry/archive/{entryId}")
   public boolean archiveEntry(@PathVariable("entryId") String entryId) {
     return _entryService.archiveEntry(entryId);
   }

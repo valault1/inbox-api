@@ -1,4 +1,4 @@
-package ault.Entities.Entries;
+package ault.InboxApi.Entities.Entries;
 
 import java.util.Date;
 import java.util.List;
@@ -24,15 +24,18 @@ public class Entry {
 
   private boolean archived;
 
+  private String context;
+
   public Entry(String content) {
     this.content = content;
     this.creationDate = new Date();
   }
 
-  public Entry(String content, String userId) {
+  public Entry(String content, String userId, String context) {
     this.content = content;
     this.userId = userId;
     this.creationDate = new Date();
+    this.context = context;
   }
 
 }

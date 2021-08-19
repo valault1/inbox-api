@@ -1,7 +1,9 @@
 package ault.InboxApi.DataInitialization;
 
-import ault.InboxApi.repositories.*;
-import ault.Entities.Entries.Entry;
+import ault.InboxApi.Entities.Entries.Entry;
+import ault.InboxApi.Entities.Entries.EntryRepository;
+import ault.InboxApi.Entities.Users.User;
+import ault.InboxApi.Entities.Users.UserRepository;
 import ault.InboxApi.models.*;
 
 import org.json.simple.JSONArray;
@@ -19,17 +21,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class DataFillerService {
   private final EntryRepository _entryRepository;
+  private final UserRepository _userRepository;
 
   @Autowired
-  public DataFillerService(EntryRepository entryRepository) {
+  public DataFillerService(EntryRepository entryRepository, UserRepository userRepository) {
     this._entryRepository = entryRepository;
+    this._userRepository = userRepository;
   }
 
   @PostConstruct
   @Transactional
   public void fillData() {
     try {
-      fillEntries();
+      // fillEntries();
+      fillUsers();
     } catch (Exception e) {
       System.out.println(e);
     }
@@ -50,5 +55,18 @@ public class DataFillerService {
       _entryRepository.save(e);
     }
 
+  }
+
+  private void fillUsers() throws Exception {
+    System.out.println("Filling users");
+    System.out.println("\n\n\n\n\n\n\n\n\n");
+    JSONArray obj = (JSONArray) new JSONParser()
+        .parse(new FileReader("src\\main\\java\\ault\\InboxApi\\DataInitialization\\data\\users.json"));
+    for (var item : obj) {
+      ObjectMapper objectMapper = new ObjectMapper();
+      System.out.println("Attempting to write entry");
+      User e = objectMapper.readValue(item.toString(), User.class);
+      _userRepository.save(e);
+    }
   }
 }
