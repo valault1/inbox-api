@@ -57,7 +57,8 @@ public class EntryService {
   }
 
   public List<Entry> getEntriesByUserAndContext(String userId, String context) {
-    return _entryRepository.getEntriesByUserAndContext(userId, context);
+    System.out.println("In service for entries by user and context");
+    return _entryRepository.getCurrentEntries(userId, context);
   }
 
 }

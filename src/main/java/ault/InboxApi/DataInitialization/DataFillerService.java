@@ -48,7 +48,7 @@ public class DataFillerService {
     System.out.println("\n\n\n\n\n\n\n\n\n");
     JSONArray obj = (JSONArray) new JSONParser()
         .parse(new FileReader("src\\main\\java\\ault\\InboxApi\\DataInitialization\\data\\entities.json"));
-    for (var item : obj) {
+    for (Object item : obj) {
       ObjectMapper objectMapper = new ObjectMapper();
       System.out.println("Attempting to write entry");
       Entry e = objectMapper.readValue(item.toString(), Entry.class);
@@ -62,7 +62,7 @@ public class DataFillerService {
     System.out.println("\n\n\n\n\n\n\n\n\n");
     JSONArray obj = (JSONArray) new JSONParser()
         .parse(new FileReader("src\\main\\java\\ault\\InboxApi\\DataInitialization\\data\\users.json"));
-    for (var item : obj) {
+    for (Object item : obj) {
       ObjectMapper objectMapper = new ObjectMapper();
       System.out.println("Attempting to write entry");
       User e = objectMapper.readValue(item.toString(), User.class);

@@ -25,27 +25,24 @@ public class EntryController {
     return _entryService.entryCount(userId, context);
   }
 
-  @GetMapping("/entry/entries")
+  @GetMapping("/entry/getAllEntries")
   public List<Entry> entries() {
-    System.out.println("Got request for all entities");
     return _entryService.entries();
   }
 
   @GetMapping("/entry/{userId}/{context}")
   public List<Entry> getEntriesByUserAndContext(@PathVariable("userId") String userId,
       @PathVariable("context") String context) {
-    System.out.println("Got request for entries by user");
     return _entryService.getEntriesByUserAndContext(userId, context);
   }
 
-  @PutMapping("/entry")
+  @PutMapping("/entry/create")
   public String createEntry(@RequestBody CreateEntryRequest newEntryRequest) {
     return _entryService.createEntry(newEntryRequest);
   }
 
-  @PostMapping("/entry")
+  @PostMapping("/entry/update")
   public String updateEntry(@RequestBody Entry updatedEntry) {
-    System.out.println("Got request to update entity");
     return _entryService.updateEntry(updatedEntry);
   }
 

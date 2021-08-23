@@ -25,6 +25,7 @@ public class Entry {
   private boolean archived;
 
   private String context;
+  
 
   public Entry(String content) {
     this.content = content;
