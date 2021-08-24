@@ -20,10 +20,27 @@ public class ListGroupController {
     this._listGroupService = listGroupService;
   }
 
-  @PutMapping("/listGroup")
+  @PutMapping("/listGroup/create")
   public String createEntry(@RequestBody CreateListGroupRequest newListGroupRequest) {
     return _listGroupService.createListGroup(newListGroupRequest);
   }
+
+  @GetMapping("/listGroup/getAll")
+  public List<ListGroup> getAllListGroups() {
+    return _listGroupService.getAllListGroups();
+  }
+
+  @GetMapping("/listGroup/getByUser/{userId}")
+  public List<ListGroup> getByUser(@PathVariable("userId") String userId) {
+    return _listGroupService.getByUser(userId);
+  }
+
+  @GetMapping("/listGroup/getPopulatedListGroupsbyUser/{userId}")
+  public List<PopulatedListGroup> getPopulatedListGroupsbyUser(@PathVariable("userId") String userId) {
+    return _listGroupService.getPopulatedListGroupsbyUser(userId);
+  }
+
+
 
   
 

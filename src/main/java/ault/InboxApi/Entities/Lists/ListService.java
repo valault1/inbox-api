@@ -15,7 +15,7 @@ public class ListService {
   }
 
   public String createList(CreateListRequest request) {
-    List lg = new List(request.name, request.userId);
+    List lg = new List(request.name, request.userId, request.listGroupId);
     _listRepository.save(lg);
     return lg.getId();
   }

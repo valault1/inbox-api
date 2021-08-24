@@ -7,4 +7,6 @@ public class CreateListRequest {
   public String name;
 
   public String userId;
+
+  public String listGroupId;
 }

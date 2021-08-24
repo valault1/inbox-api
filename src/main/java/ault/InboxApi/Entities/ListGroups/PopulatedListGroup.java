@@ -1,4 +1,4 @@
-package ault.InboxApi.Entities.Lists;
+package ault.InboxApi.Entities.ListGroups;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,10 +8,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import ault.InboxApi.Entities.Lists.List;
+
 @Data
 @Document
 @NoArgsConstructor
-public class List{
+public class PopulatedListGroup {
 
   @Id
   private String id;
@@ -20,16 +22,14 @@ public class List{
 
   private String userId;
 
-  private String listGroupId;
-
-  private java.util.List<ListEntry> entries = new ArrayList<ListEntry>();
+  private java.util.List<List> lists;
   
 
-  public List(String name, String userId, String listGroupId) {
+  public PopulatedListGroup(String id, String name, String userId) {
+    this.id = id;
     this.name = name;
     this.userId = userId;
-    this.listGroupId = listGroupId;
+    lists = new ArrayList<List>();
   }
-
 
 }

@@ -6,4 +6,9 @@ import org.springframework.data.mongodb.repository.Query;
 public interface ListRepository extends MongoRepository<List, String> {
   @Query("{listGroupId: ?0}")
   java.util.List<List> getListsByGroup(String listGroupId);
+
+  @Query("{userId: ?0}")
+  java.util.List<List> getListsByUser(String userId);
+
+  
 }
