@@ -1,7 +1,6 @@
 package ault.InboxApi.Entities.Lists;
 
 import java.util.ArrayList;
-import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,8 +1,11 @@
 package ault.InboxApi.Entities.Lists;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+
 
 @Service
 @Transactional
@@ -40,6 +43,18 @@ public class ListService {
     list.setEntries(entries);
     _listRepository.save(list);
     return list.getId();
+  }
+
+  public boolean updateListEntry(UpdateListEntryRequest request) {
+    List list = _listRepository.findById(request.listId).get();
+    java.util.List<ListEntry> entries = list.getEntries();
+    if (request.index > entries.size() - 1)
+      entries.add(new ListEntry(request.entry));
+    else
+      entries.set(request.index, new ListEntry(request.entry));
+    list.setEntries(entries);
+    _listRepository.save(list);
+    return true;
   }
 
 

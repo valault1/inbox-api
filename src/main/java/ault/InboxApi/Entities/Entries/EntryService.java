@@ -1,17 +1,9 @@
 package ault.InboxApi.Entities.Entries;
 
-import ault.InboxApi.Entities.Entries.Entry;
-import ault.InboxApi.models.*;
-
-import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.BasicQuery;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

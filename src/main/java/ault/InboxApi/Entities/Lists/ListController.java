@@ -45,6 +45,11 @@ public class ListController {
     return _listService.addListEntry(request);
   }
 
+  @PostMapping("/list/updateListEntry")
+  public boolean updateListEntry(@RequestBody UpdateListEntryRequest request) {
+    return _listService.updateListEntry(request);
+  }
+
   
 
 

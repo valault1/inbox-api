@@ -1,8 +1,5 @@
 package ault.InboxApi.Entities.Entries;
 
-import java.util.List;
-
-import org.json.simple.JSONObject;
 
 import lombok.Data;
 

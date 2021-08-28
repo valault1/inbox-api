@@ -9,20 +9,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document
 @NoArgsConstructor
-public class ListEntry{
+public class ListEntryDTO{
 
   private String content;
 
   private boolean completed;
   
 
-  public ListEntry(String content) {
+  public ListEntryDTO(String content) {
     this.content = content;
   }
 
-  public ListEntry(ListEntryDTO dto) {
-    this.content = dto.getContent();
-    this.completed = dto.isCompleted();
+  public ListEntryDTO(ListEntry entry) {
+    this.content = entry.getContent();
+    this.completed = entry.isCompleted();
+
   }
 
 }
