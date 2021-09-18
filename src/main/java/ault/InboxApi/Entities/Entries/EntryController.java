@@ -25,6 +25,11 @@ public class EntryController {
     return _entryService.entryCount(userId, context);
   }
 
+  @GetMapping("/entry/count/{userId}")
+  public long entityCount(@PathVariable("userId") String userId) {
+    return _entryService.entryCount(userId);
+  }
+
   @GetMapping("/entry/getAllEntries")
   public List<Entry> entries() {
     return _entryService.entries();
@@ -38,6 +43,7 @@ public class EntryController {
 
   @PutMapping("/entry/create")
   public String createEntry(@RequestBody CreateEntryRequest newEntryRequest) {
+    System.out.println("creating entry");
     return _entryService.createEntry(newEntryRequest);
   }
 

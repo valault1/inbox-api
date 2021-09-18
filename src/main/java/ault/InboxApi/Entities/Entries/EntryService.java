@@ -29,6 +29,10 @@ public class EntryService {
     return _entryRepository.countUnarchived(userId, context);
   }
 
+  public long entryCount(String userId) {
+    return _entryRepository.countUnarchived(userId);
+  }
+
   public String createEntry(CreateEntryRequest request) {
     Entry entry = new Entry(request.content, request.userId, request.context);
     _entryRepository.save(entry);

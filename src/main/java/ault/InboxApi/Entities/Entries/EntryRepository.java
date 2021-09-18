@@ -12,6 +12,9 @@ public interface EntryRepository extends MongoRepository<Entry, String> {
   @Query(value = "{archived : false, userId: ?0, context: ?1}", count = true)
   int countUnarchived(String userId, String context);
 
+  @Query(value = "{archived : false, userId: ?0}", count = true)
+  int countUnarchived(String userId);
+
   @Query("{archived : false, userId:?0, context: ?1}")
   List<Entry> getCurrentEntries(String userId, String context);
 
