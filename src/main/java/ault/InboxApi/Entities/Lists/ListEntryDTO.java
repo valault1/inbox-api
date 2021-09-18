@@ -14,6 +14,8 @@ public class ListEntryDTO{
   private String content;
 
   private boolean completed;
+
+  private int index;
   
 
   public ListEntryDTO(String content) {
@@ -23,6 +25,7 @@ public class ListEntryDTO{
   public ListEntryDTO(ListEntry entry) {
     this.content = entry.getContent();
     this.completed = entry.isCompleted();
+    this.index = entry.getIndex();
 
   }
 

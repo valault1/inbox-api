@@ -86,5 +86,24 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+
+		<profile>
+				<id>local</id>
+				<activation>
+						<activeByDefault>true</activeByDefault>
+				</activation>
+				<properties>
+						<activatedProperties>local</activatedProperties>
+				</properties>
+		</profile>
+
+		<profile>
+				<id>prod</id>
+				<properties>
+						<activatedProperties>prod</activatedProperties>
+				</properties>
+		</profile>
+</profiles>
 
 </project>

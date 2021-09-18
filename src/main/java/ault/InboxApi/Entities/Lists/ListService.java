@@ -57,6 +57,13 @@ public class ListService {
     return true;
   }
 
+  public boolean updateListName(UpdateListNameRequest request) {
+    List list = _listRepository.findById(request.listId).get();
+    list.setName(request.name);
+    _listRepository.save(list);
+    return true;
+  }
+
 
 
 

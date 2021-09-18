@@ -22,6 +22,8 @@ public class ListController {
 
   @PutMapping("/list/create")
   public String createlist(@RequestBody CreateListRequest newListRequest) {
+    System.out.println("creating list");
+    System.out.println(newListRequest);
     return _listService.createList(newListRequest);
   }
 
@@ -49,6 +51,13 @@ public class ListController {
   public boolean updateListEntry(@RequestBody UpdateListEntryRequest request) {
     return _listService.updateListEntry(request);
   }
+
+  @PostMapping("/list/updateListName")
+  public boolean updateListName(@RequestBody UpdateListNameRequest request) {
+    return _listService.updateListName(request);
+  }
+
+
 
   
 
